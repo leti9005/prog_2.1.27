@@ -8,15 +8,12 @@
 #include <string>
 using namespace std;
 
-class Constants
+struct Constants
 {
 
+    const string USER_INTERFACE = 
 
-public:
-    Constants() {}
-    ~Constants() {}
-
-    const string USER_INTERFACE = "\nSpravochnik po gornim vershinam. \n"
+        "\nSpravochnik po gornim vershinam. \n"
 
         "Interface: \n"
 
@@ -52,14 +49,11 @@ public:
     const string WARNING_BAD_INPUT = "\nBad input\n";
     const string WARNING_NO_ELEMENT = "\nNo such element \n";
     const string WARNING_EMPTY_LIST = "\nList is empty \n";
-    const string WARNING_NO_RESULT = "\nNo result for this input. \n";
+    const string WARNING_NO_RESULT = "\nNo result for this input \n";
 
-    const string ERROR_OUTOFBOUNDS = "\nError: Index out of bounds. \n";
+    const string ERROR_OUTOFBOUNDS = "\nERROR: Index out of bounds \n";
     const string ERROR_CODE = "\nCODE ERROR\n";
-    const string ERROR_GENERAL = "\nProgramm error. Something gone wrong.\n";
-
-private:
-
+    const string ERROR_GENERAL = "\nERROR. Something wrong.\n";
 
 };
 
