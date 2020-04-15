@@ -6,22 +6,28 @@
 #pragma once
 
 #include "ListElement.h"
+#include "Constants.h"
 #include <iostream>
 
 using namespace std;
 
+
 class EdgesList
 {
+	Constants constants;
 
 public:
 
 	EdgesList() {
+		cout << "\nEdgesList()\n" << endl; // Для дебага
 		head = nullptr;
 		tail = nullptr;
 		mSize = 0;
 	}
 
 	~EdgesList() {
+		cout << "\n~EdgesList()\n" << endl; // Для дебага
+
 		while (head != nullptr){
 			ListElement* temp = head->next;
 			delete head;
@@ -66,7 +72,7 @@ public:
 			break;
 
 		default:
-			cout << "\n CODE ERROR \n" << endl;
+			cout << constants.ERROR_CODE << endl;
 			throw std::exception();
 		}
 
@@ -79,12 +85,12 @@ public:
 
 		if (mSize == 0) {
 
-			cout << "\n List is empty \n" << endl;
+			cout << constants.WARNING_EMPTY_LIST << endl;
 			throw std::exception();
 
 		}else if (index > mSize - 1) {
 
-			cout << "\n Error: Index out of bounds. \n" << endl;
+			cout << constants.ERROR_OUTOFBOUNDS << endl;
 			throw std::exception();
 
 		}else {
@@ -100,7 +106,7 @@ public:
 
 		if (result == nullptr) {
 
-			cout << "\n CODE ERROR \n" << endl;
+			cout << constants.ERROR_CODE << endl;
 			throw std::exception();
 
 		}else {
@@ -129,6 +135,7 @@ public:
 	void pushEnd(string edge, string system, string country, float height) { // Добавление в конец, функция-надстройка
 
 		ListElement* tempObject = new ListElement();
+
 		tempObject->edge = edge;
 		tempObject->system = system;
 		tempObject->country = country;
@@ -170,7 +177,7 @@ public:
 		ListElement* element = getElement(temp, 1);
 
 		if (element == nullptr) {
-			cout << "\n No such edge \n" << endl;
+			cout << constants.WARNING_NO_ELEMENT << endl;
 		}else {
 			element->edge = edge;
 			element->system = system;
@@ -203,7 +210,7 @@ public:
 				}
 
 				if (previous == nullptr) {
-					cout << "\n CODE ERROR \n" << endl;
+					cout << constants.ERROR_CODE << endl;
 					throw std::exception();
 				}
 
@@ -238,7 +245,7 @@ public:
 		ListElement* element = getElement(edge, 1);
 
 		if (element == nullptr) {
-			cout << "\n No such edge \n" << endl;
+			cout << constants.WARNING_NO_ELEMENT << endl;
 		}else {
 			//printElement(element);
 			element->print();
@@ -278,7 +285,7 @@ public:
 		}
 
 		if (countEdges == 0) {
-			cout << "\n No such element \n" << endl;
+			cout << constants.WARNING_NO_ELEMENT << endl;
 		}else {
 
 			cout << system
@@ -328,7 +335,7 @@ public:
 		}
 
 		if (countEdges == 0) {
-			cout << "\n No such element \n" << endl;
+			cout << constants.WARNING_NO_ELEMENT << endl;
 		}else {
 
 			cout << country
@@ -373,6 +380,7 @@ private:
 	/*
 		Сюда так же можно закинуть пару функций из public (пометил). Но пострадает читаемость кода, т.к. программа маленькая.
 	*/
+
 	ListElement* head, * tail; // Адреса начала и конца списка - это у нас ключевые элементы списка
 	unsigned int mSize; // Кол-во элементов в списке, ну так просто для удобства в петлях
 

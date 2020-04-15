@@ -18,7 +18,7 @@ struct ListElement {
         cout << "\nName - " << edge << "\n " 
             << "Mount system - " << system << "\n " 
             << "Country - " << country << "\n " 
-            << "height - " << height << "\n"
+            << "Height - " << height << "\n"
             << endl;
     }
 };
