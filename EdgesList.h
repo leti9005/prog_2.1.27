@@ -1,4 +1,8 @@
-﻿#pragma once
+﻿/**
+	Класс списка, оперирующий структурой ListElement. 
+*/
+
+#pragma once
 
 #include "ListElement.h"
 #include <iostream>
@@ -10,15 +14,13 @@ class EdgesList
 
 public:
 
-	EdgesList() { // Конструктор
-		//cout << "\n Constructor called " << endl;
+	EdgesList() {
 		head = nullptr;
 		tail = nullptr;
 		mSize = 0;
 	}
 
-	~EdgesList() { // Деструктор
-		//cout << "\n Destructor called " << endl;
+	~EdgesList() {
 		while (head != nullptr){
 			ListElement* temp = head->next;
 			delete head;
@@ -349,20 +351,20 @@ public:
 	void printList() { // Вывод всего листа
 		cout << '\n';
 
-		ListElement* element = head;                //Определяем указатель, который изначально он равен адресу начала списка
+		ListElement* element = head; 
 
-		while (element != nullptr){               //До тех пор пока не встретит пустое значение
+		while (element != nullptr){
 			cout << element->edge << ", " 
 				<< element->system << ", " 
 				<< element->country << ", " 
 				<< element->height << '\n';
-			element = element->next;                //Указываем, что далее нам нужен следующий элемент
+			element = element->next;
 		}
 
 		cout << '\n' << endl;
 	}
 
-	unsigned int getSize() {
+	unsigned int getSize() { // геттер
 		return mSize;
 	}
 
@@ -370,7 +372,7 @@ private:
 	/*
 		Сюда так же можно закинуть пару функций из public (пометил). Но пострадает читаемость кода, т.к. программа маленькая.
 	*/
-	ListElement* head, * tail; // Адреса начала и конца списка
-	unsigned int mSize; // Кол-во элементов в списке
+	ListElement* head, * tail; // Адреса начала и конца списка - это у нас ключевые элементы списка
+	unsigned int mSize; // Кол-во элементов в списке, ну так просто для удобства в петлях
 
 };
